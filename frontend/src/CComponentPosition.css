@@ -1,0 +1,62 @@
+.Position-div {
+    height: 466px;
+    width: 256px;
+}
+
+.Position-inline-div {
+    /* Назначаем div флекс-контейнером,
+    по умолчанию элементы располагаются в строку */
+    display: flex;
+    /* Задаем выравнивание элементов: с одинаковым расстоянием между ними */
+    justify-content: space-between;
+}
+
+.Position-img {
+    height: 253px;
+    width: 253px;
+    margin: 10px;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+
+.Position-name {
+    font-size: 24px;
+    color: #797979;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    margin: 10px;
+    text-align: left;
+}
+
+.Position-price {
+    font-size: 22px;
+    color: #231F20;
+    font-weight: 700;
+    font-family: 'Montserrat',sans-serif;
+    margin: 10px;
+    text-align: left;
+}
+
+.Position-description {
+    color: #686466;
+    font-weight: 500;
+    font-family: 'Montserrat',sans-serif;
+    margin: 10px;
+    text-align: left;
+    font-size: 13px;
+}
+
+.Position-button {
+    width: 126px;
+    height: 36px;
+    margin: 9px;
+    background-color: #FF7900;
+    color: #473E43;
+    border-radius: 8px;
+    border: 0px solid transparent;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Montserrat',sans-serif;
+
+}
