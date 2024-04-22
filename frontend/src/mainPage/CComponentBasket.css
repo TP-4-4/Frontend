@@ -1,0 +1,87 @@
+.Basket-rectangle{
+    border: 3.50px solid #ff7900;
+    border-radius: 10px;
+    width: 349px;
+    height: auto;
+    background-color: white;
+}
+
+.Basket-position{
+    display: flex;
+    justify-content: space-between;
+    margin: 24px;
+
+}
+
+.Basket-naumber{
+    border-radius: 8px;
+    background-color: #F3F3F7;
+    display: flex;
+    justify-content: center;
+    height: auto;
+    width: 93px;
+    margin: 10px;
+    margin-left: 30px;
+}
+
+.Basket-naumber-text{
+    font-size: 22px;
+    color: #696F7A;
+    font-weight: 700;
+    font-family: 'Montserrat',sans-serif;
+    text-align: center;
+    margin: 5px;
+}
+
+.Basket-price{
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    color: #ff7900;
+    font-family: 'Montserrat',sans-serif;
+    white-space: nowrap;
+    margin-top: 30px;
+}
+
+.Basket-name{
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 113%;
+    color: #0e0c0d;
+    text-align: left;
+    font-family: 'Montserrat',sans-serif;
+    padding-left: 20px;
+    margin: 10px;
+}
+
+.Basket-img{
+    border-radius: 92px;
+    width: 71px;
+    height: 71px;
+}
+
+.Basket-line{
+    height: 1px;
+    width: auto;
+    background-color: #ECECF1;
+    margin: 15px 25px;
+}
+
+.Basket-sum-text{
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 113%;
+    color: #0e0c0d;
+    font-family: 'Montserrat', sans-serif;
+    margin: 5px;
+    text-align: left;
+}
+
+.Basket-sum{
+    font-weight: 800;
+    font-size: 24px;
+    text-align: right;
+    color: #ff7900;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: -5px;
+}

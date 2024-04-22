@@ -1,0 +1,25 @@
+.Category-inline-div {
+    /* Назначаем div флекс-контейнером,
+    по умолчанию элементы располагаются в строку */
+    display: flex;
+    /* Задаем выравнивание элементов: с одинаковым расстоянием между ними */
+    justify-content: center;
+    padding-bottom: 47px;
+}
+
+.Category-position {
+    margin-top: 110px;
+}
+
+.Category-name {
+    color: #FF7900;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    text-align: left;
+    /*padding-left: 0px;*/
+    /*margin-left: 5px;*/
+    /*padding-left: 240px;*/
+}
+
+

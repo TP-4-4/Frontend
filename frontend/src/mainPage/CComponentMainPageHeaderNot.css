@@ -1,0 +1,146 @@
+.Header-logo{
+    height: 56px;
+    width: 107px;
+    /*padding-left: 240px;*/
+    padding-right: 33px;
+    margin-top:15px;
+
+}
+
+.Header-h11{
+    font-size: 17px;
+    color: #231F20;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding-right: 10px;
+    text-align: left;
+    margin: 0px;
+    margin-top:19px;
+
+        /*text-align: left;*/
+ }
+
+.Header-h14{
+    font-size: 17px;
+    color: #231F20;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    padding-right: 10px;
+    text-align: right;
+    margin: 0px;
+    margin-top:19px;
+
+    /*text-align: left;*/
+}
+
+.Header-h12{
+    font-size: 17px;
+    color: #FF7900;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-align: left;
+    margin: 0px;
+    margin-top:19px;
+    /*margin: 10px;*/
+    /*text-align: left;*/
+}
+
+.Header-h13{
+    font-size: 16px;
+    color: #696F7A;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-align: left;
+    padding-right: 42px;
+
+    /*margin: 0px;*/
+    /*margin-top:19px;*/
+    /*margin: 10px;*/
+    /*text-align: left;*/
+}
+
+.Header-h3{
+    font-size: 13px;
+    color: #231F20;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    text-align: left;
+    /*margin: 10px;*/
+    /*text-align: left;*/
+}
+
+.Header-category{
+    font-size: 15px;
+    color: #0E0C0D;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-align: left;
+    padding-right: 42px;
+    /*margin: 10px;*/
+    /*text-align: left;*/
+}
+
+.Header-inline-div {
+    /* Назначаем div флекс-контейнером,
+    по умолчанию элементы располагаются в строку */
+    display: flex;
+
+    /* Задаем выравнивание элементов: с одинаковым расстоянием между ними */
+
+}
+
+.Header-inline-categoty {
+    /* Назначаем div флекс-контейнером,
+    по умолчанию элементы располагаются в строку */
+    display: flex;
+
+    justify-content: start;
+    /*padding-left: 215px;*/
+
+    /* Задаем выравнивание элементов: с одинаковым расстоянием между ними */
+
+}
+
+.Header-inline-b {
+    display: flex;
+    justify-content: start;
+    margin-top: 85px;
+}
+
+.Header-inline-c {
+    display: flex;
+    justify-content: start;
+    margin-top: 40px;
+}
+
+
+.Header-div{
+    height: 46px;
+    width: 260px;
+    text-align: left;
+}
+
+.Header-button {
+    /*width: 160px;*/
+    /*height: 42px;*/
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 175%;
+    color: #231f20;
+    /*margin: ;*/
+    padding: 7px 25px 7px 25px;
+    background-color: #FF7900;
+
+    border-radius: 8px;
+    border: 0px solid transparent;
+
+    font-family: 'Montserrat',sans-serif;
+}
+
+.Header-table{
+    /*margin-right: 219px;*/
+    /*margin-left: 220px;*/
+    /*justify-content: center;*/
+    margin-left: auto;
+    margin-right: auto;
+}
