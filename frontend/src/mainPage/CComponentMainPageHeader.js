@@ -9,16 +9,20 @@ class CComponentMainPageHeaderNot extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // name: "Пицца с креветками",
-            // description: "Домашнаяя паста феттуччине, сливочный соус, креветки,трюфельное масло, черный перец, пармезан, 350 г.",
-            // price: "от 650 Р",
             logo: logo,
             basket: 1
 
         }
     }
 
+    basket(){
+        window.location='../basket/CComponentPage.js'
+    }
+
     render() {
+
+
+
         return (
             <div>
                 <table className='Header-table'>
@@ -47,7 +51,7 @@ class CComponentMainPageHeaderNot extends Component {
                             <h1 className='Header-h14'>Профиль</h1>
                             <div className='Header-inline-c'>
                                 <h2 className='Header-category'>Контакты</h2>
-                                <h2 className='Header-h13'>Вoйти</h2>
+                                <h2 className='Header-h13'>Выйти</h2>
                                 <button className='Header-button'>Корзина | {this.state.basket}</button>
                             </div>
 

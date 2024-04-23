@@ -65,6 +65,7 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     text-align: left;
+    margin-left: 10px;
     /*margin: 10px;*/
     /*text-align: left;*/
 }
@@ -84,10 +85,19 @@
     /* Назначаем div флекс-контейнером,
     по умолчанию элементы располагаются в строку */
     display: flex;
-
+    justify-content: space-around;
     /* Задаем выравнивание элементов: с одинаковым расстоянием между ними */
 
 }
+
+.Header-inline-basket{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 100px;
+    height: auto;
+    width: 1010px;
+}
+
 
 .Header-inline-categoty {
     /* Назначаем div флекс-контейнером,

@@ -10,12 +10,7 @@ class CComponentMainPageHeaderNot extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // name: "Пицца с креветками",
-            // description: "Домашнаяя паста феттуччине, сливочный соус, креветки,трюфельное масло, черный перец, пармезан, 350 г.",
-            // price: "от 650 Р",
             logo: logo,
-            basket: 1
-
         }
     }
 

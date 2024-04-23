@@ -18,14 +18,14 @@
     background-color: #F3F3F7;
     display: flex;
     justify-content: center;
-    height: auto;
+    height: 93px;
     width: 93px;
     margin: 10px;
     margin-left: 30px;
 }
 
 .Basket-naumber-text{
-    font-size: 22px;
+    font-size: 18px;
     color: #696F7A;
     font-weight: 700;
     font-family: 'Montserrat',sans-serif;
