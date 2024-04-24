@@ -1,0 +1,48 @@
+.inline{
+    display: flex;
+    justify-content: left;
+}
+
+.inline-all{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.h1{
+    font-size: 14px;
+    color: #0E0C0D;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    /*margin: 10px;*/
+    text-align: left;
+}
+.h2{
+    font-size: 16px;
+    color: #0E0C0D;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    /*margin: 10px;*/
+    text-align: left;
+}
+
+.h3{
+    font-size: 14px;
+    color: #696F7A;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.logo{
+    display: flex;
+    justify-content: left;
+    /*padding-left: 10px;*/
+    margin-bottom: 50px;
+}
+
+.img{
+    height: 50%;
+    width: 50%;
+    padding: 0px 10px 10px 0px;
+}
