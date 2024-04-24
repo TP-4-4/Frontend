@@ -1,0 +1,144 @@
+.Basket-div{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 1010px;
+}
+.Basket-title{
+    font-weight: 800;
+    font-size: 36px;
+    color: #ff7900;
+    font-family: 'Montserrat',sans-serif;
+    text-align: left;
+    margin: 0;
+    height: 44px;
+}
+
+.Basket-inline{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Basket-pos-inline{
+    display: flex;
+    justify-content: space-between;
+    height: auto;
+}
+
+.Basket-pos-name{
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 89%;
+    color: #0e0c0d;
+    font-family: 'Montserrat',sans-serif;
+    text-align: left;
+}
+
+.Basket-pos-description{
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 146%;
+    color: #686466;
+    font-family: 'Montserrat',sans-serif;
+    text-align: left;
+    width: 409px;
+}
+
+.Basket-pos-price{
+    font-weight: 800;
+    font-size: 24px;
+    text-align: center;
+    color: #ff7900;
+    font-family: 'Montserrat',sans-serif;
+    margin: 15px;
+    margin-top: 20px;
+}
+
+.Basket-pos-img{
+    border-radius: 92px;
+    width: 71px;
+    height: 71px;
+    margin: 15px;
+}
+
+.Basket-number{
+    border-radius: 8px;
+    background-color: #F3F3F7;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    padding: 5px;
+    padding-top: 3px;
+    text-align: center;
+    margin: 15px;
+    margin-top: 20px;
+    /*width: auto;*/
+    /*margin-left: 30px;*/
+}
+
+.Basket-number-text{
+    font-size: 18px;
+    color: #696F7A;
+    font-weight: 700;
+    font-family: 'Montserrat',sans-serif;
+    text-align: center;
+    margin: 5px;
+}
+
+.Basket-close{
+    width: 27px;
+    height: 27px;
+    margin: 15px;
+    margin-top: 23px;
+    margin-bottom: auto;
+}
+
+.Basket-l{
+    background-color: #ECECF1;
+    width: auto;
+    height: 1px;
+}
+
+.Basket-inline-sum{
+    display: inline-flex;
+    justify-content: center;
+    margin-bottom: 20px ;
+    margin-left: 470px;
+}
+
+.Basket-text-sum{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 71%;
+    color: #0e0c0d;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+
+    padding-top: 20px;
+    padding-right: 15px;
+}
+
+.Basket-back{
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 187%;
+    color: #696f7a;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.Basket-button{
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 175%;
+    color: #231f20;
+    /*margin: ;*/
+    margin-bottom: 20px;
+    padding: 7px 25px 7px 25px;
+    background-color: #FF7900;
+
+    border-radius: 8px;
+    border: 0px solid transparent;
+
+    font-family: 'Montserrat',sans-serif;
+}

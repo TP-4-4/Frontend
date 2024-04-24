@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
-import CComponentPosition from "./CComponentPosition";
+import CComponentMainPage from "./mainPage/CComponentMainPage";
+import CComponentBasket from "./basket/CComponentPage";
+import CComponentMainPageNot from "./mainPage/CComponentMainPageNot";
+import CComponentOrder from "./order/CComponentPage"
+import CComponentProfile from './profile/CComponentPage'
+import CComponentOrders from './orders/CComponentPage'
 
 function App() {
   return (
     <div className="App">
-      {/*<header className="App-header">*/}
-        <CComponentPosition/>
-        {/*<img src={logo} className="App-logo" alt="logo" />*/}
-        {/*<p>*/}
-        {/*  Edit <code>src/App.js</code> and save to reload.*/}
-        {/*</p>*/}
-        {/*<a*/}
-        {/*  className="App-link"*/}
-        {/*  href="https://reactjs.org"*/}
-        {/*  target="_blank"*/}
-        {/*  rel="noopener noreferrer"*/}
-        {/*>*/}
-        {/*  Learn React*/}
-        {/*</a>*/}
-      {/*</header>*/}
+        <CComponentMainPageNot/>
+        {/*<CComponentMainPage/>*/}
+        {/*<CComponentBasket/>*/}
+        {/*<CComponentOrder/>*/}
+        {/*/!*<CComponentProfile/>*!/*/}
+        {/*<CComponentOrders/>*/}
     </div>
   );
 }

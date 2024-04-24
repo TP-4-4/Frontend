@@ -1,0 +1,42 @@
+.p{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.hed{}
+
+.hed:hover .basket{ /* При наведении на ссылку в раппере, откроется контент */
+    display: block;
+}
+
+.basket{
+     position: absolute;
+     top: 150px;
+     left: 890px;
+     display: none;
+ }
+
+.c{
+    position: absolute;
+    top: 0;
+    left: 32px;
+}
+
+
+
+.cat1{
+    position: relative;
+    top: 400px;
+    left: -500px;
+}
+.cat2{
+    position: relative;
+    top: 2745px;
+    left: 505px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
