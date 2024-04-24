@@ -4,6 +4,9 @@ import img from "../img/pizza.png";
 import cat1 from "../img/cat1.png";
 import './CComponentMainPageHeaderNot.css'
 import './CComponentMainPageNot.css'
+import CComponentPage from "../basket/CComponentPage";
+import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
+
 
 class CComponentMainPageHeaderNot extends Component {
 
@@ -11,8 +14,10 @@ class CComponentMainPageHeaderNot extends Component {
         super(props);
         this.state = {
             logo: logo,
+            basket: 1
         }
     }
+
 
     render() {
         return (
@@ -46,6 +51,7 @@ class CComponentMainPageHeaderNot extends Component {
                         </td>
                     </tr>
                 </table>
+
 
             </div>
 
