@@ -1,0 +1,126 @@
+.Profile-main{
+    margin: 10px;
+}
+
+.Profile-div{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 1010px;
+}
+
+.Profile-title{
+    font-weight: 800;
+    font-size: 36px;
+    color: #ff7900;
+    font-family: 'Montserrat',sans-serif;
+    text-align: left;
+    margin: 0;
+    height: 44px;
+}
+
+.Profile-inline-input{
+    display: flex;
+    justify-content: space-between;
+}
+
+.Profile-text-input{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 200%;
+    color: #231f20;
+    opacity: 0.7;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 5px;
+    text-align: left;
+}
+
+.Profile-input-cheng{
+    border: 1.50px solid #f3f3f7;
+    border-radius: 7px;
+    /*resize: vertical;*/
+    width: 350px;
+    max-width: 530px;
+    display: block;
+    height: 100%;
+    /*word-wrap: break-word;*/
+    /*word-break: break-all;*/
+    margin-right: 10px;
+
+    margin-left: 0;
+    /*margin: 5px;*/
+    padding: 10px;
+    background: rgba(241, 242, 245, 0.5);
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 165%;
+    color: #231f20;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.Profile-input{
+    margin-left: 0;
+    margin-right: 10px;
+    /*margin: 5px;*/
+    border: 1.50px solid #e2e2e9;
+    border-radius: 7px;
+    width: 350px;
+    max-width: 530px;
+    display: block;
+    height:100%;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 187%;
+    color: #231f20;
+    opacity: 0.82;
+    font-family: 'Montserrat', sans-serif;
+    padding: 7px;
+}
+
+.Profile-input-a{
+    margin-left: 0;
+    margin-right: 10px;
+    /*margin: 5px;*/
+    border: 1.50px solid #e2e2e9;
+    border-radius: 7px;
+    width: 550px;
+    height:48px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 187%;
+    color: #231f20;
+    opacity: 0.82;
+    font-family: 'Montserrat', sans-serif;
+    padding: 7px;
+}
+
+.Profile-button{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 175%;
+    color: #231f20;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 7px 25px 7px 25px;
+    background-color: #FF7900;
+
+    border-radius: 8px;
+    border: 0px solid transparent;
+
+    font-family: 'Montserrat',sans-serif;
+}
+
+.Profile-button-gray{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 175%;
+    color: #696f7a;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 7px 25px 7px 25px;
+    background-color:#e3ecf5;
+    border-radius: 8px;
+    border: 0px solid transparent;
+    font-family: 'Montserrat',sans-serif;
+}
