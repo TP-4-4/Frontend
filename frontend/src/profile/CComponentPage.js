@@ -115,7 +115,7 @@ class CComponentPage extends Component {
                             {this.state.show &&
                                 <textarea className='Profile-input-a' value='Улица, Дом, Подъезд, Этаж, Квартира'/>
                             }
-                            <button className='Profile-button'>Добавить адрес</button>
+                            <button onClick={this.showAdres} className='Profile-button'>Добавить адрес</button>
 
                         </div>
                     </div>
