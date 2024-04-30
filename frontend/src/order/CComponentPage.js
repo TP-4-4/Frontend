@@ -55,9 +55,9 @@ class CComponentPage extends Component {
     }
 
     setAdres(){
-        this.notshowAdres()
         this.setState({
             adres: "Дом",
+            shouldShowAdres: false,
         })
     }
 
