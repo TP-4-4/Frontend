@@ -49,11 +49,18 @@ class CComponentMainPageHeaderNot extends Component {
                             <img src={cat1} alt={cat1}/>
                         </td>
                         <td>
-                            <h1 className='Header-h14'>Профиль</h1>
+                            <Link to={'/profile'}>
+                                <h1 className='Header-h14'>Профиль</h1>
+                            </Link>
                             <div className='Header-inline-c'>
                                 <h2 className='Header-category'>Контакты</h2>
-                                <h2 className='Header-h13'>Выйти</h2>
-                                <button className='Header-button'>Корзина | {this.state.basket}</button>
+                                <Link to={'/'}>
+                                    <h2 className='Header-h13'>Выйти</h2>
+                                </Link>
+
+                                <Link to={'/basket'}>
+                                    <button className='Header-button'>Корзина | {this.state.basket}</button>
+                                </Link>
                             </div>
 
                         </td>
