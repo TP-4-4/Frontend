@@ -4,8 +4,8 @@ import img from "../img/pizza.png";
 import cat1 from "../img/cat1.png";
 import './CComponentMainPageHeaderNot.css'
 import './CComponentMainPageNot.css'
+import { Link } from 'react-router-dom'
 import CComponentPage from "../basket/CComponentPage";
-import {BrowserRouter as Router, Route, Switch, Link} from "react-router-dom";
 
 
 class CComponentMainPageHeaderNot extends Component {
@@ -47,7 +47,9 @@ class CComponentMainPageHeaderNot extends Component {
                         <td className='Header-inline-b'>
                             <h2 className='Header-category'>Контакты</h2>
                             <h2 className='Header-h13'>Войти</h2>
-                            <button className='Header-button'>Корзина | {this.state.basket}</button>
+                            <Link to={'/basket'}>
+                                <button className='Header-button'>Корзина | {this.state.basket}</button>
+                            </Link>
                         </td>
                     </tr>
                 </table>

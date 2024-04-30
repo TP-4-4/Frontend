@@ -7,6 +7,7 @@ import cat3 from '../img/cat3.png'
 import CComponentMainPageDeliveryPayment from './CComponentMainPageDeliveryPayment';
 import CComponentMainPageFooter from "./CComponentMainPageFooter";
 import CComponentBasket from "./CComponentBasket";
+import { Link } from "react-router-dom";
 
 class CComponentMainPage extends Component {
     render() {

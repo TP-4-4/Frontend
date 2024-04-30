@@ -3,6 +3,7 @@ import img from '../img/pizza.png';
 import './CComponentPosition.css'
 import './CComponentCategory.css'
 import close from "../img/CloseOr.png";
+import { Link } from "react-router-dom";
 
 class CComponentPosition extends Component {
 

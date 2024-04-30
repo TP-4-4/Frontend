@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import logo from "../img/logo.png";
 import step from "../img/orderStep.png";
 import '../mainPage/CComponentMainPageHeaderNot.css'
+import { Link } from "react-router-dom";
 
 
 class CComponentHeader extends Component {

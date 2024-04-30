@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './CComponentBasket.css';
 import img from '../img/pizza.png'
 import close from '../img/Close.png'
+import { Link } from "react-router-dom";
 
 class CComponentBasket extends Component {
     constructor(props) {

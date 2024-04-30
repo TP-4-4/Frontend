@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from '../mainPage/CComponentMainPageHeader'
 import Footer from '../mainPage/CComponentMainPageFooter'
 import './CComponentPage.css'
+import { Link } from "react-router-dom";
 
 class CComponentPage extends Component {
     constructor(props) {

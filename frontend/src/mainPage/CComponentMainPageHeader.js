@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import logo from '../img/logo.png';
 import img from "../img/pizza.png";
 import cat1 from "../img/cat1.png";
+import { Link } from "react-router-dom";
 import './CComponentMainPageHeaderNot.css'
 
 class CComponentMainPageHeaderNot extends Component {

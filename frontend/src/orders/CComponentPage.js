@@ -5,6 +5,7 @@ import './CComponentPage.css'
 import Map from './CComponentMap'
 import close from "../img/CloseOr.png";
 import map from "../img/mapK.png";
+import { Link } from "react-router-dom";
 
 
 class CComponentPage extends Component {

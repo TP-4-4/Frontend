@@ -4,6 +4,7 @@ import CComponentPosition from "./CComponentPosition";
 import "./CComponentCategory.css"
 import close from "../img/CloseOr.png";
 import pizza from "../img/pizza.png";
+import { Link } from "react-router-dom";
 
 class CComponentCategory extends Component {
     constructor(props) {
