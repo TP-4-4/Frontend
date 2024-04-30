@@ -131,7 +131,7 @@ class CComponentPage extends Component {
                                 <img onClick={this.notshowAdres} src={close} alt='close' className='Orders-map-close'/>
                             </div>
                             <div className='Orders-inline'>
-                                <button onClick={this.setAdres} className='Order-adres'>Дом</button>
+                                <button onClick={this.notshowAdres} className='Order-adres'>Дом</button>
                                 <button className='Order-adres'>Родители</button>
                             </div>
                             <div className='Orders-inline'>
