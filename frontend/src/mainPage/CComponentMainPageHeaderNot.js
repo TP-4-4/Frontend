@@ -33,6 +33,13 @@ class CComponentMainPageHeaderNot extends Component {
         this.notregistration=this.notregistration.bind(this);
         this.showKod=this.showKod.bind(this);
         this.notshowKod=this.notshowKod.bind(this);
+        this.handleChangeEmail=this.handleChangeEmail.bind(this)
+    }
+
+    handleChangeEmail(event){
+        this.setState({
+            email: event.target.value,
+        })
     }
 
     login(){
@@ -117,7 +124,7 @@ class CComponentMainPageHeaderNot extends Component {
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Email</h2>
-                                <input className='Header-input'/>
+                                <input onChange={this.handleChangeEmail} value={this.state.email} className='Header-input'/>
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Пароль</h2>
@@ -142,7 +149,7 @@ class CComponentMainPageHeaderNot extends Component {
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Email</h2>
-                                <input className='Header-input'/>
+                                <input onChange={this.handleChangeEmail} value={this.state.email} className='Header-input'/>
                             </div>
                             <div className='Orders-inline'>
                                 <button onClick={this.showKod} className='Header-button'>Выслать код</button>
@@ -160,7 +167,7 @@ class CComponentMainPageHeaderNot extends Component {
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Email</h2>
-                                <input className='Header-input'/>
+                                <input onChange={this.handleChangeEmail} value={this.state.email} className='Header-input'/>
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Код</h2>

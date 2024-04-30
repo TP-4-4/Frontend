@@ -48,7 +48,7 @@ class CComponentMainPageFooter extends Component {
                         </div>
                     </div>
                 </div>
-                <img src={cat4} alt={cat4}/>
+                <img className='Footer-cat' src={cat4} alt={cat4}/>
             </div>
 
         );

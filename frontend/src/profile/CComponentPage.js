@@ -129,11 +129,11 @@ class CComponentPage extends Component {
                                 <h1 className='Orders-map-number'>Куда доставить?</h1>
                                 <img onClick={this.notshowAdres} src={close} alt='close' className='Orders-map-close'/>
                             </div>
-                            <div className='Orders-inline'>
+                            <div className='Profile-input-inline'>
                                 <input className='Profile-input-ad' value='Улица'/>
                                 <input className='Profile-input-ad' value='Дом'/>
                             </div>
-                            <div className='Orders-inline'>
+                            <div className='Profile-input-inline'>
                                 <input className='Profile-input-ad' value='Подъезд'/>
                                 <input className='Profile-input-ad' value='Этаж'/>
                                 <input className='Profile-input-ad' value='Квартира'/>

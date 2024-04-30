@@ -159,15 +159,10 @@
 .Header-input{
     border: 1.50px solid #f3f3f7;
     border-radius: 7px;
-    /*resize: vertical;*/
     width: 350px;
     max-width: 530px;
     display: block;
     height: 100%;
-    /*word-wrap: break-word;*/
-    /*word-break: break-all;*/
-    margin: 5px 10px 5px 5px;
-    /*margin: 5px;*/
     padding: 10px;
     background: rgba(241, 242, 245, 0.5);
     font-weight: 700;
@@ -175,4 +170,6 @@
     line-height: 165%;
     color: #231f20;
     font-family: 'Montserrat', sans-serif;
+    margin: 5px 10px 5px 5px;
+
 }

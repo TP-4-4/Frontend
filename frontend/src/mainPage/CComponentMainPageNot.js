@@ -23,8 +23,6 @@ class CComponentMainPageNot extends Component {
                 </div>
                 <img src={cat2} alt={cat2} className='cat1'/>
                 <img src={cat3} alt={cat3} className='cat2'/>
-
-
             </div>
         )
     }
