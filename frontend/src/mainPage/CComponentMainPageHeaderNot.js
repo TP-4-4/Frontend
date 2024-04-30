@@ -117,13 +117,13 @@ class CComponentMainPageHeaderNot extends Component {
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Email</h2>
-                                <input className='Profile-input-cheng'/>
+                                <input className='Header-input'/>
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Пароль</h2>
-                                <input className='Profile-input-cheng'/>
+                                <input className='Header-input'/>
                             </div>
-                            <div className='Orders-inline'>
+                            <div className='Header-inline-div'>
                                 <Link to={'/authorized'}>
                                     <button className='Header-button'>Вход</button>
                                 </Link>
@@ -142,7 +142,7 @@ class CComponentMainPageHeaderNot extends Component {
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Email</h2>
-                                <input className='Profile-input-cheng'/>
+                                <input className='Header-input'/>
                             </div>
                             <div className='Orders-inline'>
                                 <button onClick={this.showKod} className='Header-button'>Выслать код</button>
@@ -160,11 +160,11 @@ class CComponentMainPageHeaderNot extends Component {
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Email</h2>
-                                <input className='Profile-input-cheng'/>
+                                <input className='Header-input'/>
                             </div>
                             <div className='Orders-inline'>
                                 <h2 className='Orders-composition'>Код</h2>
-                                <input className='Profile-input-cheng'/>
+                                <input className='Header-input'/>
                             </div>
                             <div className='Orders-inline'>
                                 <Link to={'/authorized'}>

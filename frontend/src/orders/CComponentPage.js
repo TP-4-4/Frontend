@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from '../mainPage/CComponentMainPageHeader'
 import Footer from '../mainPage/CComponentMainPageFooter'
 import './CComponentPage.css'
+import '../profile/CComponentPage.css'
 import Map from './CComponentMap'
 import close from "../img/CloseOr.png";
 import map from "../img/mapK.png";
@@ -64,6 +65,9 @@ class CComponentPage extends Component {
                             <h2 className='Orders-price'>{this.state.price} P</h2>
                             <h2 className='Orders-state-completed'>Завершён</h2>
                         </div>
+                        <Link to={'/authorized'}>
+                            <h2 className='Profile-text-input'>Назад в магазин</h2>
+                        </Link>
                     </div>
                     <Footer/>
                 </div>

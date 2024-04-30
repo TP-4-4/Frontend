@@ -4,6 +4,7 @@ import Header from "./CComponentHeader";
 import './CComponentPage.css'
 import cat from '../img/catBasket.png'
 import pizza from '../img/pizza.png'
+import { Link } from "react-router-dom";
 import close from '../img/Close.png'
 
 class CComponentPage extends Component {
@@ -63,8 +64,12 @@ class CComponentPage extends Component {
                                 <h1 className='Basket-title'>{this.state.price} P</h1>
                             </div>
                             <div className='Basket-inline'>
-                                <h2 className='Basket-back'>Вернуться в магазин</h2>
-                                <button className='Basket-button'>Оформить заказ</button>
+                                <Link to={'/authorized'}>
+                                    <h2 className='Basket-back'>Вернуться в магазин</h2>
+                                </Link>
+                                <Link to={'/order'}>
+                                    <button className='Basket-button'>Оформить заказ</button>
+                                </Link>
                             </div>
                         </div>
 

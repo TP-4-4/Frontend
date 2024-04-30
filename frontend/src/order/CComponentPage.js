@@ -3,6 +3,8 @@ import Header from './CComponentHeader';
 import Footer from '../mainPage/CComponentMainPageFooter'
 import './CComponentPage.css'
 import { Link } from "react-router-dom";
+import img from "../img/pizza.png";
+import close from "../img/CloseOr.png";
 
 class CComponentPage extends Component {
 
@@ -17,14 +19,45 @@ class CComponentPage extends Component {
             description: 'Домашнаяя паста феттуччине, сливочный соус, креветки, ' +
                 'трюфельное масло, черный перец, пармезан.350 г',
             price: 120,
+            shouldShowAdres: false,
+            shouldShowPlaced: false
         }
 
         this.handleChangeNum=this.handleChangeNum.bind(this)
+        this.showAdres=this.showAdres.bind(this)
+        this.notshowAdres=this.notshowAdres.bind(this)
+        this.showPlaced=this.showPlaced.bind(this)
+    }
+
+
+    showAdres(){
+        this.setState({
+            shouldShowAdres: true,
+        })
+    }
+
+    notshowAdres(){
+        this.setState({
+            shouldShowAdres: false,
+        })
+    }
+
+    showPlaced(){
+        this.setState({
+            shouldShowPlaced: true,
+        })
     }
 
     handleChangeNum(event) {
         this.setState({
             number: event.target.value,
+        })
+    }
+
+    setAdres(){
+        this.notshowAdres()
+        this.setState({
+            adres: "Дом",
         })
     }
 
@@ -51,15 +84,17 @@ class CComponentPage extends Component {
                             </div>
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Адрес доставки</h2>
-                                <textarea name='number' value={this.state.adres} className='Order-input-cheng'/>
+                                <textarea onClick={this.showAdres} name='number' value={this.state.adres} className='Order-input-cheng'/>
                             </div>
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Время доставки</h2>
                                 <input name='number' value={this.state.time} className='Order-input-cheng'/>
                             </div>
                             <div className='Order-inline-input'>
-                                <h2 className='Order-back'>Назад в корзину</h2>
-                                <button className='Order-button'>Оформить заказ</button>
+                                <Link to={'/basket'}>
+                                    <h2 className='Order-back'>Назад в корзину</h2>
+                                </Link>
+                                <button onClick={this.showPlaced} className='Order-button'>Оформить заказ</button>
                             </div>
                         </div>
                         <div className='Order-composition'>
@@ -87,6 +122,38 @@ class CComponentPage extends Component {
 
 
                 </div>
+
+                {this.state.shouldShowAdres &&
+                    <div className='Orders-map'>
+                        <div className='Orders-map-div'>
+                            <div className='Orders-inline'>
+                                <h1 className='Orders-map-number'>Куда доставить?</h1>
+                                <img onClick={this.notshowAdres} src={close} alt='close' className='Orders-map-close'/>
+                            </div>
+                            <div className='Orders-inline'>
+                                <div onClick={this.setAdres} className='Order-adres'>Дом</div>
+                                <div className='Order-adres'>Родители</div>
+                            </div>
+                            <div className='Orders-inline'>
+                                <div className='Order-adres'>Друзья</div>
+                                <div className='Order-adres'>Сестра</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                {this.state.shouldShowPlaced &&
+                    <div className='Orders-map'>
+                        <div className='Orders-map-div'>
+                            <div className='Orders-inline'>
+                                <h1 className='Orders-map-number'>Заказ оформлен</h1>
+                            </div>
+                            <Link to={'/authorized'}>
+                                <button className='Order-button'>Назад в магазин</button>
+                            </Link>
+                        </div>
+                    </div>
+                }
 
                 <Footer/>
             </div>

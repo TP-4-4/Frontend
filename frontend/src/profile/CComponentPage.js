@@ -70,12 +70,20 @@ class CComponentPage extends Component {
                                        pattern="[9]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}"/>
                             </div>
                             <div className='Profile-inline-input'>
-                                <button className='Profile-button-gray'>Выйти</button>
-                                <button className='Profile-button'>Заказы</button>
+                                <Link to={'/'}>
+                                    <button className='Profile-button-gray'>Выйти</button>
+                                </Link>
+                                <Link to={'/orders'}>
+                                    <button className='Profile-button'>Заказы</button>
+                                </Link>
                             </div>
+                            <Link to={'/authorized'}>
+                                <h2 className='Profile-text-input'>Назад в магазин</h2>
+                            </Link>
+
                         </div>
                         <div>
-                            <h2 className='Profile-text-input'>Ваши адреса</h2>
+                        <h2 className='Profile-text-input'>Ваши адреса</h2>
                             <textarea className='Profile-input-a' value={this.state.adres}/>
                             <button className='Profile-button'>Добавить адрес</button>
 

@@ -151,3 +151,11 @@
 
     font-family: 'Montserrat',sans-serif;
 }
+
+.Order-adres{
+    border-radius: 8px;
+    width: 280px;
+    height: 49px;
+    box-shadow: 0 4px 28px 0 rgba(0, 0, 0, 0.08);
+    background: #fff;
+}
