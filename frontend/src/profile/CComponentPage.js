@@ -3,6 +3,8 @@ import Header from '../mainPage/CComponentMainPageHeader'
 import Footer from '../mainPage/CComponentMainPageFooter'
 import './CComponentPage.css'
 import { Link } from "react-router-dom";
+import img from "../img/pizza.png";
+import close from "../img/CloseOr.png";
 
 class CComponentPage extends Component {
     constructor(props) {
@@ -14,12 +16,19 @@ class CComponentPage extends Component {
             adres: 'ул. КИМа, д. 1, под. Последний, эт. Последний, кв. 22, код Домофон',
             email: 'dcu79kjnoi@ya.ru',
             bdate: new Date(3600 * 24 * 1000),
+            shouldShowNewAdres: false,
+            show: false
         }
 
         this.handleChangeNum=this.handleChangeNum.bind(this)
         this.handleChangeName=this.handleChangeName.bind(this)
         this.handleChangeBdate=this.handleChangeBdate.bind(this)
+        this.showAdres=this.showAdres.bind(this)
+        this.notshowAdres=this.notshowAdres.bind(this)
+        this.sHow=this.sHow.bind(this)
     }
+
+
 
     handleChangeNum(event) {
         this.setState({
@@ -33,9 +42,27 @@ class CComponentPage extends Component {
         })
     }
 
+    sHow(){
+        this.setState({
+            show: true
+        })
+    }
+
     handleChangeBdate(event) {
         this.setState({
             bdate: event.target.value,
+        })
+    }
+
+    showAdres(){
+        this.setState({
+            shouldShowAdres: true,
+        })
+    }
+
+    notshowAdres(){
+        this.setState({
+            shouldShowAdres: false,
         })
     }
 
@@ -83,13 +110,39 @@ class CComponentPage extends Component {
 
                         </div>
                         <div>
-                        <h2 className='Profile-text-input'>Ваши адреса</h2>
+                            <h2 className='Profile-text-input'>Ваши адреса</h2>
                             <textarea className='Profile-input-a' value={this.state.adres}/>
+                            {this.state.show &&
+                                <textarea className='Profile-input-a' value='Улица, Дом, Подъезд, Этаж, Квартира'/>
+                            }
                             <button className='Profile-button'>Добавить адрес</button>
 
                         </div>
                     </div>
                 </div>
+
+                {this.state.shouldShowAdres &&
+                    <div className='Orders-map'>
+                        <div className='Orders-map-div'>
+                            <div className='Orders-inline'>
+                                <h1 className='Orders-map-number'>Куда доставить?</h1>
+                                <img onClick={this.notshowAdres} src={close} alt='close' className='Orders-map-close'/>
+                            </div>
+                            <div className='Orders-inline'>
+                                <input className='Profile-input' value='Улица'/>
+                                <input className='Profile-input' value='Дом'/>
+                            </div>
+                            <div className='Orders-inline'>
+                                <input className='Profile-input' value='Подъезд'/>
+                                <input className='Profile-input' value='Этаж'/>
+                                <input className='Profile-input' value='Квартира'/>
+                            </div>
+                            <input className='Profile-input' value='Название адреса'/>
+                            <button onClick={this.sHow} className='Profile-button'>Добавить адрес</button>
+                        </div>
+                    </div>
+                }
+
                 <Footer/>
             </div>
         );
