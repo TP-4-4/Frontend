@@ -163,6 +163,10 @@ class CComponentMainPageHeaderNot extends Component {
                                 <input className='Profile-input-cheng'/>
                             </div>
                             <div className='Orders-inline'>
+                                <h2 className='Orders-composition'>Код</h2>
+                                <input className='Profile-input-cheng'/>
+                            </div>
+                            <div className='Orders-inline'>
                                 <Link to={'/authorized'}>
                                     <button className='Header-button'>Регистрация</button>
                                 </Link>
