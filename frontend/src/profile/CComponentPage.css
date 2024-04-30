@@ -124,3 +124,19 @@
     border: 0px solid transparent;
     font-family: 'Montserrat',sans-serif;
 }
+
+.Profile-input-a{
+    border-radius: 8px;
+    border: 2px solid #ff7900;
+    width: 280px;
+    height: 49px;
+    box-shadow: 0 4px 28px 0 rgba(0, 0, 0, 0.08);
+    background: #fff;
+    padding: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 187%;
+    color: rgba(0, 0, 0, 0.8);
+    font-family: 'Montserrat',sans-serif;
+    margin: 10px;
+}

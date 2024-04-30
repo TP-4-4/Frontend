@@ -130,15 +130,15 @@ class CComponentPage extends Component {
                                 <img onClick={this.notshowAdres} src={close} alt='close' className='Orders-map-close'/>
                             </div>
                             <div className='Orders-inline'>
-                                <input className='Profile-text-input' value='Улица'/>
-                                <input className='Profile-text-input' value='Дом'/>
+                                <input className='Profile-input-a' value='Улица'/>
+                                <input className='Profile-input-a' value='Дом'/>
                             </div>
                             <div className='Orders-inline'>
-                                <input className='Profile-text-input' value='Подъезд'/>
-                                <input className='Profile-text-input' value='Этаж'/>
-                                <input className='Profile-text-input' value='Квартира'/>
+                                <input className='Profile-input-a' value='Подъезд'/>
+                                <input className='Profile-input-a' value='Этаж'/>
+                                <input className='Profile-input-a' value='Квартира'/>
                             </div>
-                            <input className='Profile-text-input' value='Название адреса'/>
+                            <input className='Profile-input-a' value='Название адреса'/>
                             <button onClick={this.sHow} className='Profile-button'>Добавить адрес</button>
                         </div>
                     </div>
