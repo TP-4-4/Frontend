@@ -5,6 +5,7 @@ import './CComponentPage.css'
 import { Link } from "react-router-dom";
 import img from "../img/pizza.png";
 import close from "../img/CloseOr.png";
+import axios from 'axios'
 
 class CComponentPage extends Component {
     constructor(props) {
@@ -12,50 +13,71 @@ class CComponentPage extends Component {
 
         this.state = {
             name: 'Иван',
-            number: '+7 999 999-99-99',
-            adres: 'ул. КИМа, д. 1, под. Последний, эт. Последний, кв. 22, код Домофон',
             email: 'dcu79kjnoi@ya.ru',
-            bdate: new Date(3600 * 24 * 1000),
+            secondName: 'Пупки',
+            address:'ул. КИМа, д. 1, под. Последний, эт. Последний, кв. 22, код Домофон',
+            street: 'Улица',
+            house: 'Дом',
+            entrance: 'Подъезд',
+            floor: 'Этаж',
+            apartment: 'Квартира',
             shouldShowNewAdres: false,
             show: false
         }
 
-        this.handleChangeNum=this.handleChangeNum.bind(this)
-        this.handleChangeName=this.handleChangeName.bind(this)
-        this.handleChangeBdate=this.handleChangeBdate.bind(this)
         this.showAdres=this.showAdres.bind(this)
         this.notshowAdres=this.notshowAdres.bind(this)
-        this.sHow=this.sHow.bind(this)
+        this.getInfo=this.getInfo.bind(this)
+        this.setAddress=this.setAddress.bind(this)
+        this.handleChange=this.handleChange.bind(this)
     }
 
-
-
-    handleChangeNum(event) {
-        this.setState({
-            number: event.target.value,
-        })
+    componentDidMount() {
+        this.getInfo()
     }
 
-    handleChangeName(event) {
-        this.setState({
-            name: event.target.value,
-        })
+    getInfo() {
+        console.log('Взяли инфо');
+
+        fetch('http://127.0.0.1:8000/users/details/')
+            .then(response => response.json())
+            .then(data =>
+                console.log('Data:', data)
+                // this.setState({
+                //     categoriesList: data
+                // })
+            )
+        // let stat
+        //
+        // const response = await fetch('http://127.0.0.1:8000/orders/api/create/', {
+        //     method: 'post'
+        // }).then(function (response) {
+        //     stat = response.status;
+        // })
+        // console.log('statys '+stat);
     }
 
-    sHow(){
-        this.setState({
-            show: true,
-            shouldShowAdres: false,
-        })
+    handleChange= event =>{
+        this.setState({[event.target.name]: event.target.value});
     }
 
-    handleChangeBdate(event) {
+    setAddress(){
+        window.ym(97428582,'reachGoal','AddAddressButtonClick');
+        let address = 'ул. '+this.state.street+', д. '+this.state.house+', под. '+this.state.entrance+', эт. '+this.state.floor+', кв. '+this.state.apartment
+        console.log('адрес '+address)
         this.setState({
-            bdate: event.target.value,
+            address: address
         })
+
+        // const response = await fetch('http://127.0.0.1:8000/users/registration/', {
+        //     method: 'post',
+        //     body: address
+        // })
+        this.notshowAdres()
     }
 
     showAdres(){
+        window.ym(97428582,'reachGoal','AddAddressButtonClick');
         this.setState({
             shouldShowAdres: true,
         })
@@ -69,6 +91,7 @@ class CComponentPage extends Component {
 
 
     render() {
+        const {address, street, house, entrance, floor, apartment} = this.state
         return (
             <div className='Profile-main'>
                 <Header/>
@@ -78,31 +101,27 @@ class CComponentPage extends Component {
                         <div>
                             <div>
                                 <h2 className='Profile-text-input'>Имя</h2>
-                                <input onChange={this.handleChangeName} className='Profile-input-cheng'
-                                       value={this.state.name}/>
+                                <input className='Profile-input' value={this.state.name}/>
+                            </div>
+                            <div>
+                                <h2 className='Profile-text-input'>Фамлия</h2>
+                                <input className='Profile-input' value={this.state.secondName}/>
                             </div>
                             <div>
                                 <h2 className='Profile-text-input'>Email</h2>
                                 <input className='Profile-input' value={this.state.email}/>
                             </div>
-                            <div>
-                                <h2 className='Profile-text-input'>День рождения</h2>
-                                <input onChange={this.handleChangeBdate} className='Profile-input-cheng'
-                                       value={this.state.bdate} type='date'/>
-                            </div>
-                            <div>
-                                <h2 className='Profile-text-input'>Номер телефона</h2>
-                                <input onChange={this.handleChangeNum} className='Profile-input-cheng'
-                                       value={this.state.number} type="tel"
-                                       required
-                                       pattern="[9]{1}[0-9]{2}-[0-9]{3}-[0-9]{4}"/>
-                            </div>
+
                             <div className='Profile-inline-input'>
                                 <Link to={'/'}>
-                                    <button className='Profile-button-gray'>Выйти</button>
+                                    <button onClick={window.ym(97428582, 'reachGoal', 'LogoutButtonClick')}
+                                            className='Profile-button-gray'>Выйти
+                                    </button>
                                 </Link>
                                 <Link to={'/orders'}>
-                                    <button className='Profile-button'>Заказы</button>
+                                    <button onClick={window.ym(97428582, 'reachGoal', 'OrdersButtonClick')}
+                                            className='Profile-button'>Заказы
+                                    </button>
                                 </Link>
                             </div>
                             <Link to={'/authorized'}>
@@ -111,12 +130,11 @@ class CComponentPage extends Component {
 
                         </div>
                         <div>
-                            <h2 className='Profile-text-input'>Ваши адреса</h2>
-                            <textarea className='Profile-input-a' value={this.state.adres}/>
-                            {this.state.show &&
-                                <textarea className='Profile-input-a' value='Улица, Дом, Подъезд, Этаж, Квартира'/>
-                            }
-                            <button onClick={this.showAdres} className='Profile-button'>Добавить адрес</button>
+                            <div>
+                                <h2 className='Profile-text-input'>Адрес доставки</h2>
+                                <textarea className='Profile-input' value={this.state.address}/>
+                            </div>
+                            <button onClick={this.showAdres} className='Profile-button'>Изменить адрес</button>
 
                         </div>
                     </div>
@@ -125,21 +143,21 @@ class CComponentPage extends Component {
                 {this.state.shouldShowAdres &&
                     <div className='Orders-map'>
                         <div className='Orders-map-div'>
-                            <div className='Orders-inline'>
+                        <div className='Orders-inline'>
                                 <h1 className='Orders-map-number'>Куда доставить?</h1>
                                 <img onClick={this.notshowAdres} src={close} alt='close' className='Orders-map-close'/>
                             </div>
                             <div className='Profile-input-inline'>
-                                <input className='Profile-input-ad' value='Улица'/>
-                                <input className='Profile-input-ad' value='Дом'/>
+                                <input onChange={this.handleChange} className='Profile-input-ad' value={street} name={'street'}/>
+                                <input onChange={this.handleChange} className='Profile-input-ad' value={house} name={'house'}/>
                             </div>
                             <div className='Profile-input-inline'>
-                                <input className='Profile-input-ad' value='Подъезд'/>
-                                <input className='Profile-input-ad' value='Этаж'/>
-                                <input className='Profile-input-ad' value='Квартира'/>
+                                <input onChange={this.handleChange} className='Profile-input-ad' value={entrance} name={'entrance'}/>
+                                <input onChange={this.handleChange} className='Profile-input-ad' value={floor} name={'floor'}/>
+                                <input onChange={this.handleChange} className='Profile-input-ad' value={apartment} name={'apartment'}/>
                             </div>
-                            <input className='Profile-input-ad' value='Название адреса'/>
-                            <button onClick={this.sHow} className='Profile-button'>Добавить адрес</button>
+
+                            <button onClick={this.setAddress} className='Profile-button'>Изменить адрес</button>
                         </div>
                     </div>
                 }

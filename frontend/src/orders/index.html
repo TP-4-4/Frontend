@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map</title>
+    <!-- Подключение библиотеки Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <!-- Карта -->
+    <div id="map" style="width: 100%; height: 600px;"></div>
+
+    <!-- Скрипт JavaScript для динамического обновления карты -->
+    <script>
+        // Создание карты
+        var map = L.map('map').setView([51.670833, 39.214167], 12);
+
+        // Добавление базового слоя карты
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        const mapMarker = L.icon({
+            iconUrl: 'https://svgshare.com/i/16dt.svg',
+        });
+        
+        const deliveryMarker = L.icon({
+            iconUrl: 'https://svgshare.com/i/16d6.svg',
+        });
+        var start = null;
+        var end = null;
+        var currentDeliveryMarker = null;
+
+        // Функция для загрузки маршрута с сервера Django
+        function loadRoute() {
+            // AJAX-запрос для получения JSON с данными
+            var xhr = new XMLHttpRequest();
+            console.log(xhr);
+            xhr.open('GET', '/get_route_data', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Парсинг полученного JSON
+                    var data = JSON.parse(xhr.responseText);
+                    
+                    console.log(data);
+                    var startCoord = data[0].start_coord;
+                    console.log(startCoord);
+                    var endCoord = data[1].end_coord;
+                    console.log(endCoord);
+                    var routeCoordinates = data[2].routeCoordinates;
+                    console.log(routeCoordinates);
+                    var deliveryCoord = data[3].delivery_coord;
+                    console.log(deliveryCoord);
+                    
+                    if (start !== null) {
+                        map.removeLayer(start);
+                    }
+                    if (end !== null) {
+                        map.removeLayer(end);
+                    }
+                    
+                    start = L.marker(startCoord, {icon: mapMarker, iconSize: [5, 5]}).addTo(map);
+                    end = L.marker(endCoord, {icon: mapMarker, iconSize: [5, 5]}).addTo(map);
+                    L.polyline(routeCoordinates, { color: '#F77900' }).addTo(map);
+                    
+                    
+                    
+                    if (currentDeliveryMarker !== null) {
+                        map.removeLayer(currentDeliveryMarker);
+                    }
+                                        
+        
+                    // Добавление нового маркера deliveryCoord, если он не равен null
+                    if (deliveryCoord) {
+                        currentDeliveryMarker = L.marker(deliveryCoord, {icon: deliveryMarker, iconSize: [5, 5]}).addTo(map);
+                    }
+
+
+                }
+            };
+            xhr.send();
+        }
+        
+                // Функция для обновления координаты доставки каждые 5 секунд
+        function updateDeliveryCoord() {
+            setInterval(function() {
+                loadRoute(); // Загрузка маршрута
+            }, 5000); // Каждые 5 секунд
+        }
+
+        // Загрузка маршрута и начало обновления координаты доставки после полной загрузки страницы
+        window.onload = function() {
+            loadRoute(); // Загрузка маршрута
+            updateDeliveryCoord(); // Начало обновления координаты доставки
+        };
+    </script>
+</body>
+</html>

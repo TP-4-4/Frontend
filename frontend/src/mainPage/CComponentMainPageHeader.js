@@ -1,28 +1,69 @@
 import React, {Component} from 'react';
 import logo from '../img/logo.png';
-import img from "../img/pizza.png";
+// import img from "../img/pizza.png";
 import cat1 from "../img/cat1.png";
 import { Link } from "react-router-dom";
 import './CComponentMainPageHeaderNot.css'
+import getId from '../App.js'
 
-class CComponentMainPageHeaderNot extends Component {
+class CComponentMainPageHeader extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             logo: logo,
-            basket: 1
+            basket: 1,
+            categoriesList:[]
 
         }
+
+        this.getCatigories=this.getCatigories.bind(this);
+        this.basketAction=this.basketAction.bind(this);
     }
 
-    basket(){
-        window.location='../basket/CComponentPage.js'
+    componentDidMount() {
+        this.getCatigories()
+        this.getBasket()
+        let id = getId();
+        console.log('id: '+id);
+    }
+
+    basketAction(){
+        window.ym(97428582,'reachGoal','BasketButtonClick')
+        let id = getId();
+        console.log('id: '+id);
+    }
+
+    getBasket(){
+        console.log('Взяли количество в корзине');
+
+        fetch('http://127.0.0.1:8000/shop/api/categories/')
+            .then(response => response.json())
+            .then(data =>
+                // console.log('Data:', data)
+                this.setState({
+                    // basket: data
+                    basket: '1'
+                })
+            )
+
+    }
+
+    getCatigories(){
+        console.log('Взяли категории');
+
+        fetch('http://127.0.0.1:8000/shop/api/categories/')
+            .then(response => response.json())
+            .then(data =>
+                // console.log('Data:', data)
+                this.setState({
+                    categoriesList: data
+                })
+            )
     }
 
     render() {
-
-
+        var categories = this.state.categoriesList
 
         return (
             <div>
@@ -40,9 +81,14 @@ class CComponentMainPageHeaderNot extends Component {
                                 </div>
                             </div>
                             <div className='Header-inline-categoty'>
-                                <h2 className='Header-category'>Пицца</h2>
-                                <h2 className='Header-category'>Роллы</h2>
-                                <h2 className='Header-category'>Напитки</h2>
+                                {categories.map(function (category, id) {
+                                    return (
+                                        <div key={id}>
+                                            <h2 className='Header-category'>{category.name}</h2>
+                                        </div>
+                                    )
+                                })
+                                }
                             </div>
                         </td>
                         <td>
@@ -50,16 +96,17 @@ class CComponentMainPageHeaderNot extends Component {
                         </td>
                         <td>
                             <Link to={'/profile'}>
-                                <h1 className='Header-h14'>Профиль</h1>
+                                <h1 onClick={window.ym(97428582, 'reachGoal', 'ProfileButtonClick')}
+                                    className='Header-h14'>Профиль</h1>
                             </Link>
                             <div className='Header-inline-c'>
                                 <h2 className='Header-category'>Контакты</h2>
                                 <Link to={'/'}>
-                                    <h2 className='Header-h13'>Выйти</h2>
+                                    <h2 onClick={window.ym(97428582,'reachGoal','LogoutButtonClick')} className='Header-h13'>Выйти</h2>
                                 </Link>
 
                                 <Link to={'/basket'}>
-                                    <button className='Header-button'>Корзина | {this.state.basket}</button>
+                                    <button onClick={this.basketAction} className='Header-button'>Корзина | {this.state.basket}</button>
                                 </Link>
                             </div>
 
@@ -74,4 +121,4 @@ class CComponentMainPageHeaderNot extends Component {
     }
 }
 
-export default CComponentMainPageHeaderNot;
+export default CComponentMainPageHeader;

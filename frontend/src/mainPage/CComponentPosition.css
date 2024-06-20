@@ -27,6 +27,7 @@
     font-weight: 800;
     margin: 10px;
     text-align: left;
+    line-height: 117%;
 }
 
 .Position-price {
@@ -45,6 +46,7 @@
     margin: 10px;
     text-align: left;
     font-size: 13px;
+    line-height: 146%;
 }
 
 .Position-button {

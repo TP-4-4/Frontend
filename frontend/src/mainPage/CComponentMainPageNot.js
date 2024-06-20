@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import CComponentCategory from "./CComponentCategory";
 import CComponentMainPageHeaderNot from "./CComponentMainPageHeaderNot";
 import './CComponentMainPageNot.css'
 import CComponentCatalog from "./CComponentCatalog";
@@ -9,8 +8,12 @@ import CComponentMainPageDeliveryPayment from './CComponentMainPageDeliveryPayme
 import CComponentMainPageFooter from "./CComponentMainPageFooter";
 import { Link } from "react-router-dom";
 
+
 class CComponentMainPageNot extends Component {
+
+
     render() {
+
         return (
             <div className='p'>
                 <div className='center'>
@@ -22,7 +25,7 @@ class CComponentMainPageNot extends Component {
                     </div>
                 </div>
                 <img src={cat2} alt={cat2} className='cat1'/>
-                <img src={cat3} alt={cat3} className='cat2'/>
+                {/*<img src={cat3} alt={cat3} className='cat2'/>*/}
             </div>
         )
     }
