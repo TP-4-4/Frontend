@@ -3,8 +3,7 @@ import Header from './CComponentHeader';
 import Footer from '../mainPage/CComponentMainPageFooter'
 import './CComponentPage.css'
 import { Link } from "react-router-dom";
-import img from "../img/pizza.png";
-import close from "../img/CloseOr.png";
+import getId from '../App'
 
 class CComponentPage extends Component {
 
@@ -12,58 +11,82 @@ class CComponentPage extends Component {
         super(props);
 
         this.state = {
-            number: '+7 999 999-99-99',
-            adres: 'ул. КИМа, д. 1, под. Последний, эт. Последний, кв. 22, код Домофон',
-            time: 'побыстрее',
-            name: 'С креветками и трюфелями',
+            name: 'Иван',
+            email: 'dcu79kjnoi@ya.ru',
+            secondName: 'Пупкин',
+            address:'ул. КИМа, д. 1, под. Последний, эт. Последний, кв. 22, код Домофон',
+
+            namepos: 'С креветками и трюфелями',
             description: 'Домашнаяя паста феттуччине, сливочный соус, креветки, ' +
                 'трюфельное масло, черный перец, пармезан.350 г',
             price: 120,
-            shouldShowAdres: false,
-            shouldShowPlaced: false
+            priceAll: 120*3,
+            shouldShowPlaced: false,
+            info: []
         }
 
-        this.handleChangeNum=this.handleChangeNum.bind(this)
-        this.showAdres=this.showAdres.bind(this)
-        this.notshowAdres=this.notshowAdres.bind(this)
+        fetch('http://localhost:8000/users/details/', {
+            method: 'GET',
+            credentials: 'include'})
+            .then(response => response.json())
+            .then(data =>
+                this.setState({ info: data, address: data.address }, () => {
+                    console.log('профиль ' + JSON.stringify(this.state.info));
+                })
+            )
+
         this.showPlaced=this.showPlaced.bind(this)
+        //запросы
+        // this.getInfo=this.getInfo.bind(this)
+        this.getBacket=this.getBacket.bind(this)
+    }
+
+    componentDidMount() {
+        // this.getInfo()
+        this.getBacket()
     }
 
 
-    showAdres(){
-        this.setState({
-            shouldShowAdres: true,
-        })
+    getBacket(){
+        console.log('Взяли корзину');
+
+        fetch('http://127.0.0.1:8000/cart/api/')
+            .then(response => response.json())
+            .then(data =>
+                // console.log('Data:', data)
+                this.setState({
+                    basketList: data
+                })
+            )
     }
 
-    notshowAdres(){
-        this.setState({
-            shouldShowAdres: false,
-        })
-    }
+
 
     showPlaced(){
+        window.ym(97428582,'reachGoal','PlaceOrderButtonClick');
         this.setState({
             shouldShowPlaced: true,
         })
+        console.log('попытка вязть id '+getId())
+        //добавить пост запрос на офорление заказа
     }
 
-    handleChangeNum(event) {
-        this.setState({
-            number: event.target.value,
-        })
-    }
 
-    setAdres(){
-        this.setState({
-            adres: "Дом",
-            shouldShowAdres: false,
-        })
-    }
 
     render() {
+        let position = []
+        for (let i = 0; i <= 2; i++) {
+            position.push(<div className='Order-inline-input'>
+                    <div>
+                        <h2 className='Order-composition-name'>{this.state.namepos}</h2>
+                        <h3 className='Order-composition-description'>{this.state.description}</h3>
+                    </div>
+                    <h2 className='Order-composition-price'>{this.state.price} P</h2>
+                </div>
+            );
+        }
 
-
+        var info = this.state.info
 
         return (
             <div className='Order-main'>
@@ -74,21 +97,20 @@ class CComponentPage extends Component {
                         <div>
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Имя</h2>
-                                <input className='Order-input' value='Иван'/>
+                                <input className='Order-input' value={info.first_name}/>
                             </div>
                             <div className='Order-inline-input'>
-                                <h2 className='Order-text-input'>Номер телефона</h2>
-                                {/*<textarea onChange={this.handleChange} name='number' value={this.state.number} className='Order-input-cheng'/>*/}
-                                <input onChange={this.handleChangeNum} name='number' value={this.state.number}
-                                       className='Order-input-cheng'/>
+                                <h2 className='Order-text-input'>Фамилия</h2>
+                                <input className='Order-input' value={info.last_name}/>
+                            </div>
+                            <div className='Order-inline-input'>
+                                <h2 className='Order-text-input'>Email</h2>
+                                <input className='Order-input' value={info.email}/>
                             </div>
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Адрес доставки</h2>
-                                <textarea onClick={this.showAdres} name='number' value={this.state.adres} className='Order-input-cheng'/>
-                            </div>
-                            <div className='Order-inline-input'>
-                                <h2 className='Order-text-input'>Время доставки</h2>
-                                <input name='number' value={this.state.time} className='Order-input-cheng'/>
+                                <textarea value={info.address}
+                                          className='Order-input'/>
                             </div>
                             <div className='Order-inline-input'>
                                 <Link to={'/basket'}>
@@ -99,48 +121,15 @@ class CComponentPage extends Component {
                         </div>
                         <div className='Order-composition'>
                             <h2 className='Order-composition-title'>Состав заказа</h2>
-                            <div className='Order-inline-input'>
-                            <div>
-                                    <h2 className='Order-composition-name'>{this.state.name}</h2>
-                                    <h3 className='Order-composition-description'>{this.state.description}</h3>
-                                </div>
-                                <h2 className='Order-composition-price'>{this.state.price} P</h2>
-                            </div>
-                            <div className='Order-inline-input'>
-                                <div>
-                                    <h2 className='Order-composition-name'>{this.state.name}</h2>
-                                    <h3 className='Order-composition-description'>{this.state.description}</h3>
-                                </div>
-                                <h2 className='Order-composition-price'>{this.state.price} P</h2>
-                            </div>
+                            {position}
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Сумма заказа</h2>
-                                <h1 className='Order-sum'>{this.state.price} P</h1>
+                                <h1 className='Order-sum'>{this.state.priceAll} P</h1>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
-                {this.state.shouldShowAdres &&
-                    <div className='Orders-map'>
-                        <div className='Orders-map-div'>
-                            <div className='Orders-inline'>
-                                <h1 className='Orders-map-number'>Куда доставить?</h1>
-                                <img onClick={this.notshowAdres} src={close} alt='close' className='Orders-map-close'/>
-                            </div>
-                            <div className='Orders-inline'>
-                                <button onClick={this.notshowAdres} className='Order-adres'>Дом</button>
-                                <button className='Order-adres'>Родители</button>
-                            </div>
-                            <div className='Orders-inline'>
-                                <button className='Order-adres'>Друзья</button>
-                                <button className='Order-adres'>Сестра</button>
-                            </div>
-                        </div>
-                    </div>
-                }
 
                 {this.state.shouldShowPlaced &&
                     <div className='Orders-map'>

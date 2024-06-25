@@ -47,16 +47,6 @@
     justify-content: space-between;
 }
 
-
-
-.Orders-date{
-    font-weight: 700;
-    font-size: 19px;
-    line-height: 89%;
-    color: #0e0c0d;
-    text-align: left;
-}
-
 .Orders-composition{
     font-weight: 500;
     font-size: 13px;
@@ -66,6 +56,21 @@
     white-space: pre-wrap;
     /*width: 409px;*/
 }
+
+.Orders-date{
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 89%;
+    color: #0e0c0d;
+    text-align: left;
+    margin-top: 35px;
+    /*padding-top: 15px;*/
+    /*margin: 10px;*/
+    /*width: 83px;*/
+    /*white-space: nowrap;*/
+}
+
+
 
 .Orders-price{
     font-weight: 800;
@@ -78,11 +83,29 @@
     white-space: nowrap;
 }
 
+.order-status-not-accepted{
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 89%;
+    color: #0e0c0d;
+    margin-top: 35px;
+    width: 124px;
+}
+
 .Orders-state{
     font-weight: 700;
     font-size: 19px;
     line-height: 89%;
     color: #0e0c0d;
+    margin-top: 35px;
+    width: 124px;
+}
+
+.order-status-accepted{
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 89%;
+    color: #808080;
     margin-top: 35px;
     width: 124px;
 }
@@ -109,9 +132,6 @@
     padding: 30px 50px;
 }
 
-.Orders-map-img{
-
-}
 
 .Orders-map-number{
     font-weight: 800;

@@ -35,16 +35,32 @@
 }
 
 .Order-input{
-    margin: 5px;
+    /*margin: 5px;*/
+    /*border: 1.50px solid #e2e2e9;*/
+    /*border-radius: 7px;*/
+    /*width: 546px;*/
+    /*height:auto;*/
+    /*font-weight: 700;*/
+    /*font-size: 17px;*/
+    /*line-height: 165%;*/
+    /*color: #231f20;*/
+    /*font-family: 'Montserrat', sans-serif;*/
+    margin-left: 0;
+    margin-right: 10px;
+    /*margin: 5px;*/
     border: 1.50px solid #e2e2e9;
     border-radius: 7px;
-    width: 546px;
-    height:auto;
+    width: 350px;
+    max-width: 530px;
+    display: block;
+    height:100%;
     font-weight: 700;
-    font-size: 17px;
-    line-height: 165%;
+    font-size: 15px;
+    line-height: 187%;
     color: #231f20;
+    opacity: 0.82;
     font-family: 'Montserrat', sans-serif;
+    padding: 7px;
 }
 
 .Order-input-cheng{

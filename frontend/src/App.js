@@ -2,6 +2,7 @@
 import './App.css';
 import CComponentMainPage from "./mainPage/CComponentMainPage";
 import CComponentBasket from "./basket/CComponentPage";
+import CComponentBasketNot from "./basket/CComponentPageNot";
 import CComponentMainPageNot from "./mainPage/CComponentMainPageNot";
 import CComponentOrder from "./order/CComponentPage"
 import CComponentProfile from './profile/CComponentPage'
@@ -12,8 +13,12 @@ import {
     Route,
     Navigate
 } from "react-router-dom";
+import logo from "./img/logo.png";
+import {useState} from "react";
 
-function App() {
+function App()
+{
+
   return (
       <>
           <Router>
@@ -32,6 +37,10 @@ function App() {
                       element={<CComponentBasket/>}
                   />
                   <Route
+                      path='/basketNot'
+                      element={<CComponentBasketNot/>}
+                  />
+                  <Route
                       path='/order'
                       element={<CComponentOrder/>}
                   />
@@ -43,6 +52,8 @@ function App() {
                       path='/profile'
                       element={<CComponentProfile/>}
                   />
+
+
               </Routes>
           </Router>
       </>

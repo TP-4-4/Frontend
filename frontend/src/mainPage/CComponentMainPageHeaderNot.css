@@ -106,6 +106,7 @@
     display: flex;
 
     justify-content: start;
+    padding-top:20px;
     /*padding-left: 215px;*/
 
     /* Задаем выравнивание элементов: с одинаковым расстоянием между ними */
@@ -129,6 +130,8 @@
     height: 46px;
     width: 260px;
     text-align: left;
+    margin-bottom: 10px;
+    padding: 0;
 }
 
 .Header-button {
