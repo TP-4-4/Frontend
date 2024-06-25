@@ -27,7 +27,8 @@ class CComponentMainPageHeaderNot extends Component {
             kod: '1111',
             veryBed: false,
             linkLogin: '/',
-            categoriesList:[]
+            categoriesList:[],
+            data: []
         }
 
         this.login=this.login.bind(this);
@@ -50,12 +51,12 @@ class CComponentMainPageHeaderNot extends Component {
         this.getCatigories()
     }
 
-    getCatigories(){
+    async getCatigories(){
         console.log('Взяли категории');
 
-
-
-        fetch('http://127.0.0.1:8000/shop/api/categories/')
+        fetch('http://localhost:8000/shop/api/categories/', {
+            method: 'GET',
+            credentials: 'include'})
             .then(response => response.json())
             .then(data =>
                 // console.log('Data:', data)
@@ -63,6 +64,7 @@ class CComponentMainPageHeaderNot extends Component {
                     categoriesList: data
                 })
             )
+        console.log('категории'+this.state.categoriesList);
     }
 
     handleChange= event =>{
@@ -82,19 +84,11 @@ class CComponentMainPageHeaderNot extends Component {
         logData.set('password', this.state.password)
         let stat
 
-        //axios.post('http://127.0.0.1:8000/users/login/', {
-            //     'email': this.state.email,
-            //     'password': this.state.password
-            // }).then((res) => {
-            //     // console.log(res.status)
-            //     this.state.stat=res.status
-            //
-            //
-            // })
         console.log(stat)
-        const response = await fetch('http://127.0.0.1:8000/users/login/', {
+        const response = await fetch('http://localhost:8000/users/login/', {
             method: 'post',
-            body: logData
+            body: logData,
+            credentials: 'include'
         }).then(function (response) {
             stat = response.status;
         })
@@ -127,9 +121,10 @@ class CComponentMainPageHeaderNot extends Component {
         logData.set('address', this.state.address)
 
         let stat
-        const response = await fetch('http://127.0.0.1:8000/users/registration/', {
+        const response = await fetch('http://localhost:8000/users/registration/', {
             method: 'post',
-            body: logData
+            body: logData,
+            credentials: 'include'
         }).then(function (response) {
             stat = response.status;
         })
@@ -192,6 +187,8 @@ class CComponentMainPageHeaderNot extends Component {
     render() {
         var categories = this.state.categoriesList
         const {email, password, name, secondName, address} = this.state
+        this.state.veryBed=false
+
         return (
             <div>
                 <table className='Header-table'>
@@ -209,13 +206,12 @@ class CComponentMainPageHeaderNot extends Component {
                             </div>
 
                             <div className='Header-inline-categoty'>
-                                {categories.map(function (category, id) {
-                                        return (
+                                {categories?.map((category, id) => (
                                             <div key={id} >
                                                 <h2 className='Header-category'>{category.name}</h2>
                                             </div>
                                         )
-                                    })
+                                    )
                                 }
                             </div>
                         </td>
@@ -227,7 +223,7 @@ class CComponentMainPageHeaderNot extends Component {
                             <h2  onClick={this.login} className='Header-h13'>Войти</h2>
                             {/*<button onClick={window.ym(97428582,'reachGoal','BasketButtonClick')} className='Header-button'>Корзина | {this.state.basket}</button>*/}
                             <Link to={'/basketNot'}>
-                                <button onClick={window.ym(97428582,'reachGoal','BasketButtonClick')} className='Header-button'>Корзина | {this.state.basket}</button>
+                                <button onClick={window.ym(97428582,'reachGoal','BasketButtonClick')} className='Header-button'>Корзина</button>
                             </Link>
                         </td>
                     </tr>
@@ -267,7 +263,7 @@ class CComponentMainPageHeaderNot extends Component {
                     <div className='Orders-map'>
                         <div className='Orders-map-div'>
                             <div className='Orders-inline'>
-                                <h1 className='Orders-map-number'>Вход на сайт</h1>
+                                <h1 className='Orders-map-number'>Регистрация</h1>
                                 <img onClick={this.notregistration} src={close} alt='close'
                                      className='Orders-map-close'/>
                             </div>
@@ -297,7 +293,12 @@ class CComponentMainPageHeaderNot extends Component {
                                        className='Header-input'/>
                             </div>
                             <div className='Orders-inline'>
-                                <button onClick={this.showKod} className='Header-button'>Выслать код</button>
+                                <Link to={this.state.linkLogin} >
+                                    <div>
+                                        <button onClick={this.changeHandlerRegistration} className='Header-button'>Регистрация</button>
+                                    </div>
+                                </Link>
+                                {/*<button onClick={this.showKod} className='Header-button'>Регистрация</button>*/}
                             </div>
                         </div>
                     </div>

@@ -52,7 +52,9 @@ class CComponentMainPageHeader extends Component {
     getCatigories(){
         console.log('Взяли категории');
 
-        fetch('http://127.0.0.1:8000/shop/api/categories/')
+        fetch('http://localhost:8000/shop/api/categories/', {
+            method: 'GET',
+            credentials: 'include'})
             .then(response => response.json())
             .then(data =>
                 // console.log('Data:', data)

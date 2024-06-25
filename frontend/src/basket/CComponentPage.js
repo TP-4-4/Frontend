@@ -33,10 +33,12 @@ class CComponentPage extends Component {
     getBacket(){
         console.log('Взяли корзину');
 
-        fetch('http://127.0.0.1:8000/cart/api/')
+        fetch('http://localhost:8000/cart/api/', {
+            method: 'GET',
+            credentials: 'include'})
             .then(response => response.json())
             .then(data =>
-                console.log('Data:', data)
+                    console.log('Data:', data)
                 // this.setState({
                 //     basketList: data
                 // })
@@ -84,26 +86,26 @@ class CComponentPage extends Component {
                     <div className='Basket-inline'>
                         <img src={cat} alt={cat}/>
                         <div>
-                            {pos.map((p, id) => (
-                                <div key={id}>
-                                    <div className='Basket-pos-inline'>
-                                        <img src={p.image} alt={p.image} className='Basket-pos-img'/>
-                                        <div>
-                                            <h1 className='Basket-pos-name'>{p.name}</h1>
-                                            <h2 className='Basket-pos-description'>{p.description}</h2>
-                                        </div>
-                                        <h1 className='Basket-pos-price'>{p.price} P</h1>
-                                        <div className='Basket-number'>
-                                            <h1 className='Basket-number-text'>+ |</h1>
-                                            <h1 className='Basket-number-text'>{p.number}</h1>
-                                            <h1 className='Basket-number-text'>| -</h1>
-                                        </div>
-                                        <img src={close} alt={close} className='Basket-close'/>
-                                    </div>
-                                    <div className='Basket-l'></div>
-                                </div>
-                            ))}
-                            {/*{position}*/}
+                            {/*{pos.map((p, id) => (*/}
+                            {/*    <div key={id}>*/}
+                            {/*        <div className='Basket-pos-inline'>*/}
+                            {/*            <img src={p.image} alt={p.image} className='Basket-pos-img'/>*/}
+                            {/*            <div>*/}
+                            {/*                <h1 className='Basket-pos-name'>{p.name}</h1>*/}
+                            {/*                <h2 className='Basket-pos-description'>{p.description}</h2>*/}
+                            {/*            </div>*/}
+                            {/*            <h1 className='Basket-pos-price'>{p.price} P</h1>*/}
+                            {/*            <div className='Basket-number'>*/}
+                            {/*                <h1 className='Basket-number-text'>+ |</h1>*/}
+                            {/*                <h1 className='Basket-number-text'>{p.number}</h1>*/}
+                            {/*                <h1 className='Basket-number-text'>| -</h1>*/}
+                            {/*            </div>*/}
+                            {/*            <img src={close} alt={close} className='Basket-close'/>*/}
+                            {/*        </div>*/}
+                            {/*        <div className='Basket-l'></div>*/}
+                            {/*    </div>*/}
+                            {/*))}*/}
+                            {position}
                             <div className='Basket-inline'>
                                 <Link to={'/authorized'}>
                                     <h2 className='Basket-back'>Вернуться в магазин</h2>

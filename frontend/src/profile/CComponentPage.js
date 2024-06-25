@@ -12,67 +12,94 @@ class CComponentPage extends Component {
         super(props);
 
         this.state = {
-            name: 'Иван',
-            email: 'dcu79kjnoi@ya.ru',
-            secondName: 'Пупки',
-            address:'ул. КИМа, д. 1, под. Последний, эт. Последний, кв. 22, код Домофон',
+            name: '',
+            email: '',
+            secondName: '',
+            address:'',
             street: 'Улица',
             house: 'Дом',
             entrance: 'Подъезд',
             floor: 'Этаж',
             apartment: 'Квартира',
             shouldShowNewAdres: false,
-            show: false
+            show: false,
+            info: []
         }
+
+        fetch('http://localhost:8000/users/details/', {
+            method: 'GET',
+            credentials: 'include'})
+            .then(response => response.json())
+            .then(data =>
+                this.setState({ info: data, address: data.address }, () => {
+                    console.log('профиль ' + JSON.stringify(this.state.info));
+                })
+            )
 
         this.showAdres=this.showAdres.bind(this)
         this.notshowAdres=this.notshowAdres.bind(this)
-        this.getInfo=this.getInfo.bind(this)
+        // this.getInfo=this.getInfo.bind(this)
         this.setAddress=this.setAddress.bind(this)
         this.handleChange=this.handleChange.bind(this)
     }
 
     componentDidMount() {
-        this.getInfo()
+        // this.getInfo()
     }
 
-    getInfo() {
-        console.log('Взяли инфо');
-
-        fetch('http://127.0.0.1:8000/users/details/')
-            .then(response => response.json())
-            .then(data =>
-                console.log('Data:', data)
-                // this.setState({
-                //     categoriesList: data
-                // })
-            )
-        // let stat
-        //
-        // const response = await fetch('http://127.0.0.1:8000/orders/api/create/', {
-        //     method: 'post'
-        // }).then(function (response) {
-        //     stat = response.status;
-        // })
-        // console.log('statys '+stat);
-    }
+    // async getInfo() {
+    //     // console.log('Взяли инфо');
+    //     // let info = null;
+    //     // fetch('http://localhost:8000/users/details/', {
+    //     //     method: 'GET',
+    //     //     credentials: 'include'})
+    //     //     .then(response => response.json())
+    //     //     .then(data =>
+    //     //         this.setState({ info: data }, () => {
+    //     //             console.log('профиль ' + JSON.stringify(this.state.info));
+    //     //         })
+    //     //     )
+    //
+    //     // console.log('профиль'+ info)
+    // }
 
     handleChange= event =>{
         this.setState({[event.target.name]: event.target.value});
     }
 
-    setAddress(){
-        window.ym(97428582,'reachGoal','AddAddressButtonClick');
-        let address = 'ул. '+this.state.street+', д. '+this.state.house+', под. '+this.state.entrance+', эт. '+this.state.floor+', кв. '+this.state.apartment
-        console.log('адрес '+address)
+    async setAddress() {
+        window.ym(97428582, 'reachGoal', 'AddAddressButtonClick');
+        let address = 'Россия, Воронеж, Артамонова, 34/9'
+        // let address = 'ул. ' + this.state.street + ', д. ' + this.state.house + ', под. ' + this.state.entrance + ', эт. ' + this.state.floor + ', кв. ' + this.state.apartment
+        console.log('адрес ' + address)
         this.setState({
             address: address
         })
 
-        // const response = await fetch('http://127.0.0.1:8000/users/registration/', {
-        //     method: 'post',
-        //     body: address
-        // })
+        const logData = new FormData()
+        logData.set('address', this.state.address)
+        let stat
+
+        console.log(stat)
+        const response = await fetch('http://localhost:8000/users/address/', {
+            method: 'post',
+            body: logData,
+            credentials: 'include'
+        }).then(function (response) {
+            stat = response.status;
+        })
+
+        console.log('статус адреса '+stat)
+
+        // fetch('http://localhost:8000/users/details/', {
+        //     method: 'GET',
+        //     credentials: 'include'})
+        //     .then(response => response.json())
+        //     .then(data =>
+        //         this.setState({ info: data, address: data.address }, () => {
+        //             console.log('профиль ' + JSON.stringify(this.state.info));
+        //         })
+        //     )
         this.notshowAdres()
     }
 
@@ -92,6 +119,10 @@ class CComponentPage extends Component {
 
     render() {
         const {address, street, house, entrance, floor, apartment} = this.state
+        var info = this.state.info
+
+        // console.log('профиль render' + JSON.stringify(this.state.info));
+
         return (
             <div className='Profile-main'>
                 <Header/>
@@ -99,17 +130,18 @@ class CComponentPage extends Component {
                     <h1 className='Profile-title'>Личные данные</h1>
                     <div className='Profile-inline-input'>
                         <div>
+
                             <div>
                                 <h2 className='Profile-text-input'>Имя</h2>
-                                <input className='Profile-input' value={this.state.name}/>
+                                <input className='Profile-input' value={info.first_name}/>
                             </div>
                             <div>
                                 <h2 className='Profile-text-input'>Фамлия</h2>
-                                <input className='Profile-input' value={this.state.secondName}/>
+                                <input className='Profile-input' value={info.last_name}/>
                             </div>
                             <div>
                                 <h2 className='Profile-text-input'>Email</h2>
-                                <input className='Profile-input' value={this.state.email}/>
+                                <input className='Profile-input' value={info.email}/>
                             </div>
 
                             <div className='Profile-inline-input'>

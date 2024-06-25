@@ -13,40 +13,39 @@ class CComponentPage extends Component {
         this.state = {
             name: 'Иван',
             email: 'dcu79kjnoi@ya.ru',
-            secondName: 'Пупки',
+            secondName: 'Пупкин',
             address:'ул. КИМа, д. 1, под. Последний, эт. Последний, кв. 22, код Домофон',
 
-            time: 'побыстрее',
             namepos: 'С креветками и трюфелями',
             description: 'Домашнаяя паста феттуччине, сливочный соус, креветки, ' +
                 'трюфельное масло, черный перец, пармезан.350 г',
             price: 120,
-            shouldShowPlaced: false
+            priceAll: 120*3,
+            shouldShowPlaced: false,
+            info: []
         }
+
+        fetch('http://localhost:8000/users/details/', {
+            method: 'GET',
+            credentials: 'include'})
+            .then(response => response.json())
+            .then(data =>
+                this.setState({ info: data, address: data.address }, () => {
+                    console.log('профиль ' + JSON.stringify(this.state.info));
+                })
+            )
 
         this.showPlaced=this.showPlaced.bind(this)
         //запросы
-        this.getInfo=this.getInfo.bind(this)
+        // this.getInfo=this.getInfo.bind(this)
         this.getBacket=this.getBacket.bind(this)
     }
 
     componentDidMount() {
-        this.getInfo()
+        // this.getInfo()
         this.getBacket()
     }
 
-    getInfo(){
-        console.log('Взяли инфо');
-
-        fetch('http://127.0.0.1:8000/users/details/')
-            .then(response => response.json())
-            .then(data =>
-                    console.log('Data:', data)
-                // this.setState({
-                //     categoriesList: data
-                // })
-            )
-    }
 
     getBacket(){
         console.log('Взяли корзину');
@@ -87,6 +86,7 @@ class CComponentPage extends Component {
             );
         }
 
+        var info = this.state.info
 
         return (
             <div className='Order-main'>
@@ -97,19 +97,19 @@ class CComponentPage extends Component {
                         <div>
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Имя</h2>
-                                <input className='Order-input' value={this.state.name}/>
+                                <input className='Order-input' value={info.first_name}/>
                             </div>
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Фамилия</h2>
-                                <input className='Order-input' value={this.state.secondName}/>
+                                <input className='Order-input' value={info.last_name}/>
                             </div>
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Email</h2>
-                                <input className='Order-input' value={this.state.email}/>
+                                <input className='Order-input' value={info.email}/>
                             </div>
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Адрес доставки</h2>
-                                <textarea value={this.state.address}
+                                <textarea value={info.address}
                                           className='Order-input'/>
                             </div>
                             <div className='Order-inline-input'>
@@ -124,7 +124,7 @@ class CComponentPage extends Component {
                             {position}
                             <div className='Order-inline-input'>
                                 <h2 className='Order-text-input'>Сумма заказа</h2>
-                                <h1 className='Order-sum'>{this.state.price} P</h1>
+                                <h1 className='Order-sum'>{this.state.priceAll} P</h1>
                             </div>
                         </div>
                     </div>

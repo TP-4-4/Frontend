@@ -18,12 +18,7 @@ import {useState} from "react";
 
 function App()
 {
-//     // const [id, setid] = useState(0);
-//     //
-//     // const idWork = id => {
-//     //     setid(current=>id)
-//     //     console.log('argument from Child: ', id)
-//     }
+
   return (
       <>
           <Router>

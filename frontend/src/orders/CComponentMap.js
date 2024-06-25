@@ -55,7 +55,7 @@ const CComponentMap = (props) => {
     return (
         <div >
 
-            <MapContainer center={[51.670833, 39.214167]} zoom={12} style={{ width: '100%', height: '600px' }}>
+            <MapContainer center={[51.670833, 39.214167]} zoom={12} style={{ width: '100%', height: '500px' }}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'

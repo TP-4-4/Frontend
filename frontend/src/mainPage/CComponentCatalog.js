@@ -3,8 +3,7 @@ import "./CComponentCatalog.css"
 import "./CComponentCategory.css"
 import './CComponentPosition.css'
 
-import close from "../img/CloseOr.png";
-import img from "../img/pizza.png";
+import img from "../img/fanta.png";
 
 class CComponentCatalog extends Component {
 
@@ -23,23 +22,21 @@ class CComponentCatalog extends Component {
             shouldShowElem: false
         }
 
-        this.information = this.information.bind(this);
-        this.notInformation = this.notInformation.bind(this);
         this.getCatigories=this.getCatigories.bind(this);
         this.getPosition=this.getPosition.bind(this);
     }
 
     componentDidMount() {
         this.getCatigories()
-        for (let i=0; i<15; i++){
-            this.getPosition(i)
-        }
+        // for (let i=0; i<15; i++){
+        //     this.getPosition(i)
+        // }
     }
 
     getCatigories(){
         console.log('Взяли категории');
 
-        fetch('http://127.0.0.1:8000/shop/api/categories/')
+        fetch('http://localhost:8000/shop/api/categories/')
             .then(response => response.json())
             .then(data =>
                 // console.log('Data:', data)
@@ -53,35 +50,29 @@ class CComponentCatalog extends Component {
 
     getPosition(id){
 
-        fetch('http://127.0.0.1:8000/shop/api/categories/'+id+'/')
+        fetch('http://localhost:8000/shop/api/categories/'+id+'/')
             .then(response => response.json())
             .then(data =>(
-                this.state.positionList[id] = data
+                    this.state.positionList[id] = data
                 )
             )
         console.log(this.state.positionList)
     }
 
-    information(){
-        window.ym(97428582,'reachGoal','PositionButtonClick');
-        this.setState({
-            shouldShowElem: true,
-            // namep:pos.name,
-            // description:pos.description,
-            // price:pos.price,
-            // img:pos.img
-        })
-    }
-
-    notInformation(){
-        this.setState({
-            shouldShowElem: false
-        })
-    }
-
-    addPos(id){
+    async addPos(id) {
         window.ym(97428582, 'reachGoal', 'AddingPositinButtonClick')
-
+        const isAuthenticated = window.location.pathname
+        console.log("авторизован? " + window.location.pathname.endsWith('/authorized'));
+        let stat
+        if (window.location.pathname.endsWith('/authorized')) {
+            const response = await fetch('http://localhost:8000/cart/api/add/'+id+'/', {
+                method: 'post',
+                credentials: 'include'
+            }).then(function (response) {
+                stat = response.status;
+            })
+            console.log('statys ' + stat);
+        }
         // fetch('http://127.0.0.1:8000/cart/api/add/'+id+'/')
     }
 
@@ -94,31 +85,33 @@ class CComponentCatalog extends Component {
                         {categories.map((category, id) => (
                             <div className='Category-main' key={id}>
                                 <h1 className="Category-name">{category.name}</h1>
-                                {/*<table className='Category-table'>*/}
-                                {/*    {this.getPosition(category.id)}*/}
-                                {/*    {console.log('категория '+category.id)}*/}
-                                {/*    {console.log(this.state.positionList[category.id])}*/}
-                                {/*    {this.state.positionList[category.id].map((position, id) => (*/}
-                                {/*        <td>*/}
-                                {/*            <div className='Category'>*/}
-                                {/*                <div className='Category-main'>*/}
-                                {/*                    <div key={id} onClick={this.information()} className="App-div">*/}
-                                {/*                        <img src={position.image} alt={position.image} className="Position-img"/>*/}
-                                {/*                        <h1 className="Position-name">{position.name}</h1>*/}
-                                {/*                        <h3 className="Position-description">{position.description}</h3>*/}
-                                {/*                        <div className="Position-inline-div">*/}
-                                {/*                            <h2 className="Position-price">{position.price}</h2>*/}
-                                {/*                            <button*/}
-                                {/*                                onClick={this.addPos(position.id)}*/}
-                                {/*                                className="Position-button">В корзину*/}
-                                {/*                            </button>*/}
-                                {/*                        </div>*/}
-                                {/*                    </div>*/}
-                                {/*                </div>*/}
-                                {/*            </div>*/}
-                                {/*        </td>*/}
-                                {/*    ))}*/}
-                                {/*</table>*/}
+                                <table className='Category-table'>
+                                    {this.getPosition(category.id)}{this.state.positionList[category.id].map((position, id) => (
+                                    <td>
+                                        <div className='Category'>
+                                            <div className='Category-main'>
+                                                <div key={id} onClick={window.ym(97428582,'reachGoal','PositionButtonClick')} className="App-div">
+                                                    {console.log(position.image)}
+                                                    <img src={position.image} alt={position.image} className="Position-img"/>
+                                                    <h1 className="Position-name">{position.name}</h1>
+                                                    <h3 className="Position-description">{position.description}</h3>
+                                                    <div className="Position-inline-div">
+                                                        <h2 className="Position-price">{position.price}</h2>
+                                                        <button
+                                                            onClick={() => this.addPos(position.id)}
+                                                            className="Position-button">
+                                                            В корзину
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                ))}
+                                    {console.log('категория '+category.id)}
+                                    {console.log(this.state.positionList[category.id])}
+
+                                </table>
                             </div>
                         ))}
                     </div>
